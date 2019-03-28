@@ -27,3 +27,6 @@ I stumbled across these issues by accident but when I reported them (November 20
 Check out my blog post for more details:
 
 * ["POPping WordPress"](https://nickbloor.co.uk/2018/02/28/popping-wordpress/ "POPping WordPress")
+
+## WordPress\_JS\_Snippets ##
+Some JS snippets to use for exploiting WordPress XSS vulns.
