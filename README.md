@@ -13,6 +13,15 @@ Check out my blog posts on how I built the exploit for more details:
 * ["RCE with BMC Server Automation"](https://nickbloor.co.uk/2018/01/01/rce-with-bmc-server-automation/ "RCE with BMC Server Automation")
 * ["Improving the BMC RSCD RCE Exploit"](https://nickbloor.co.uk/2018/01/08/improving-the-bmc-rscd-rce-exploit/ "Improving the BMC RSCD RCE Exploit")
 
+## JNBridge_RCE ##
+Unauthenticated remote code execution exploit for insecurely configured JNBridge Java service endpoints. Based on the work of Moritz Bechler ([CVE-2019-7839](https://packetstormsecurity.com/files/153439/Coldfusion-JNBridge-Remote-Code-Execution.html)).
+
+The network protocol implemented by JNBridge is designed solely to facilitate remote code execution for interoperability between Java and .NET applications. Thus, this isn't technically an exploit, just a handy little Python script to execute arbitrary commands against a JNBridge Java endpoint.
+
+Check out my blog post for a walkthrough of my journey from security advisory to producing a full exploit:
+
+* [Reversing JNBridge to Build an n-day Exploit for CVE-2019-7839](https://nickbloor.co.uk/2019/10/12/reversing-jnbridge-to-build-an-n-day-exploit-for-cve-2019-7839/)
+
 ## WordPress\_MitM\_ShellDrop ##
 This exploit targets insecure automatic update functionality in WordPress to drop a PHP shell on the underlying server. The exploit has been tested successfully up to WordPress 4.9.8, which is the latest version at the date of publishing.
 
