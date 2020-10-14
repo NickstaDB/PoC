@@ -13,6 +13,17 @@ Check out my blog posts on how I built the exploit for more details:
 * ["RCE with BMC Server Automation"](https://nickbloor.co.uk/2018/01/01/rce-with-bmc-server-automation/ "RCE with BMC Server Automation")
 * ["Improving the BMC RSCD RCE Exploit"](https://nickbloor.co.uk/2018/01/08/improving-the-bmc-rscd-rce-exploit/ "Improving the BMC RSCD RCE Exploit")
 
+## HP\_Device\_Manager_RCE ##
+Unauthenticated remote code execution exploit for HP Device Manager versions 5.0.0 to 5.0.3 (CVE-2020-6926, CVE-2020-6927).
+
+The exploit takes advantage of an unauthenticated Java RMI service which has a Hibernate Query Language injection vulnerability. [ORM injection](https://conference.hitb.org/hitbsecconf2016ams/materials/D2T2%20-%20Mikhail%20Egorov%20and%20Sergey%20Soldatov%20-%20New%20Methods%20for%20Exploiting%20ORM%20Injections%20in%20Java%20Applications.pdf) is used to smuggle a [Postgres SQL injection payload](https://pulsesecurity.co.nz/articles/postgres-sqli) to overwrite the `pg_hba.conf` file on the HP Device Manager server, enabling remote access to the Postgres database that's bundled with HPDM. Once enabled, a backdoor superuser account is used to authenticate to the Postgres database and execute arbitrary operating system commands.
+
+Check out my blog post on how I discovered these vulnerabilities for more details:
+
+* [HP Device Manager CVE-2020-6925, CVE-2020-6926, CVE-2020-6927](https://nickbloor.co.uk/2020/10/05/hp-device-manager-cve-2020-6925-cve-2020-6926-cve-2020-6927/)
+
+While this exploit only works against HPDM 5.x, the unauthenticated Java RMI service is present in all versions of HPDM prior to 5.0.4 and 4.7 service pack 13. The impact of exploiting this service *may* be lower, but there is still an HQLi/SQLi vulnerability, along with the ability to extract configuration (potentially including passwords for other services), and all HPDM account usernames and corresponding MD5 password hashes.
+
 ## JNBridge_RCE ##
 Unauthenticated remote code execution exploit for insecurely configured JNBridge Java service endpoints. Based on the work of Moritz Bechler ([CVE-2019-7839](https://packetstormsecurity.com/files/153439/Coldfusion-JNBridge-Remote-Code-Execution.html)).
 
